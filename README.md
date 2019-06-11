@@ -1,7 +1,7 @@
 # batchnorm-adversarial-robustness
 
 - Added .ipynb to share the code as they would have outputs as well. But found that .ipynb files are not opening in browser(maybe because of the size of outputs).
-One has to clone this pgit project locally and fire up jupyter to view them.
+One has to clone this git project locally and fire up jupyter to view them.
 
 - Alternately, to see just the code written in .ipynb files, I've added .py files corresponding to each of the .ipynb files.
 
