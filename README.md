@@ -27,3 +27,4 @@ One has to clone this git project locally and fire up jupyter to view them.
     - CNN+BN+Adversarial_Trained_FOR_BIM_ATTACK
 - VAE ADVERSARIAL DETECTOR APPROACH: 
   - <b>vae_encoding_and_detector.ipynb/.py</b> - VAE Based Adversarial Detector Attempted for CIFAR10
+- cifar10-metrics.ipynb: Loads models and Creates plots added in project paper
