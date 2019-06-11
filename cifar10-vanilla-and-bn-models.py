@@ -513,5 +513,26 @@ def fitResNet(batch_normalization=True):
     save_clf(_c, '/home/surthi/models/cifar10/', 'resnet_clf_bn.h5', 'resnet_clf_model_bn.h5')
     return _c
 
+# Train CIFAR RESNET WITH AND WITHOUT BN MODELS
 cifar_resnet_bn = fitResNet(batch_normalization=True)
 cifar_resnet_no_bn = fitResNet(batch_normalization=False)
+
+# Evaluate accuracies of resnet models against attacks
+c1 = cifar_resnet_no_bn
+c1_bn = cifar_resnet_bn
+train_acc, test_acc = evaluate(c1, x_train, y_train, x_test, y_test)
+fgsm_train_acc, fgsm_test_acc = evaluate(c1, x_train_fgsm_adv, y_train, x_test_fgsm_adv, y_test)
+ifgsm_train_acc, ifgsm_test_acc = evaluate(c1, x_train_ifgsm_adv, y_train, x_test_ifgsm_adv, y_test)
+df_train_acc, df_test_acc = evaluate(c1, x_train_deepfool_adv, y_train[:5000], x_test_deepfool_adv, y_test[:1000])
+df_train_acc_2, df_test_acc_2 = evaluate(c1, x_train_deepfool_adv_5to10, y_train[5000:10000], x_test_deepfool_adv_5to10, y_test[1000:2000])
+cl2_train_acc, cl2_test_acc = evaluate(c1, x_train_cl2_adv, y_train[:5000], x_test_cl2_adv, y_test[:1000])
+cl2_train_acc_2, cl2_test_acc_2 = evaluate(c1, x_train_cl2_adv_5to10, y_train[5000:10000], x_test_cl2_adv_5to10, y_test[1000:2000])
+
+train_acc_bn, test_acc_bn = evaluate(c1_bn, x_train, y_train, x_test, y_test)
+fgsm_train_acc_bn, fgsm_test_acc_bn = evaluate(c1_bn, x_train_fgsm_adv, y_train, x_test_fgsm_adv, y_test)
+ifgsm_train_acc_bn, ifgsm_test_acc_bn = evaluate(c1_bn, x_train_ifgsm_adv, y_train, x_test_ifgsm_adv, y_test)
+df_train_acc_bn, df_test_acc_bn = evaluate(c1_bn, x_train_deepfool_adv, y_train[:5000], x_test_deepfool_adv, y_test[:1000])
+df_train_acc_2_bn, df_test_acc_2_bn = evaluate(c1_bn, x_train_deepfool_adv_5to10, y_train[5000:10000], x_test_deepfool_adv_5to10, y_test[1000:2000])
+cl2_train_acc_bn, cl2_test_acc_bn = evaluate(c1_bn, x_train_cl2_adv, y_train[:5000], x_test_cl2_adv, y_test[:1000])
+cl2_train_acc_2_bn, cl2_test_acc_2_bn = evaluate(c1_bn, x_train_cl2_adv_5to10, y_train[5000:10000], x_test_cl2_adv_5to10, y_test[1000:2000])
+
